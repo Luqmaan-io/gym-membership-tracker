@@ -1,1 +1,1 @@
-# gym-membership-tracker
+# Gym-Membership-Tracker
