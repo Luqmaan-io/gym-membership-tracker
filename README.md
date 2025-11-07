@@ -1,38 +1,53 @@
 # Gym Membership Tracker
 
 ## About 
-This application is intended to be used by owners and staff of gyms in order to keep up to date with their members and their memberships to those gyms as well as storing key contact information needed for communication or emergencies.  
+This application is intended to be used by owners and staff of gyms in order to keep up to date with their members and their memberships to those gyms as well as storing key contact information needed for communication or emergencies.
 
-This is a full scale gym management platform that focuses on providing a robust and scalable backend architecture for handling membership tracking, payment records, and attendance logging.
+This is a gym management platform designed to provide a reliable backend architecture for handling essential gym operations such as membership tracking, payment records, and attendance logging. The focus of this project is on functionality, maintainability, and data structure, creating a scalable foundation that can be expanded with additional features in the future.
 
 ## UX Design
 
 ### Stratergy  
-The main users of this platform are to be the owners of gyms as well as their staff. Users are able to track memberships of gym goers allowing staff to make neccesary updates to details of members, updating / suspending / cancelling / freezing their memberships. The platform would aim to help gym owners operate their gyms from a better business angle, providing crucial data on number of active memebrships, their monthly incomings from membership plans, sale of products and merchandise as well as helping keep on top of stock levels.  
+The main users of this platform are the owners and staff of gyms. Users can view and manage gym members, update their membership details, and handle payment records. The system aims to reduce manual paperwork and make gym administration more efficient and data-driven.
 
-Gym owners have reported experiencing the following issues with software they're currently using:  
+This platform helps gym owners track key business information, such as member activity, payment status, and plan types all from one place.
 
-- A lot of the guys pay in cash, the system is built for card payments so they end up keeping a separate cash log in a notebook.  
-- Guest pass system too generic. They want to track who brought them in and if that person signs-up, to then thank the member with a free protein shake or preworkout drink etc.  
-- Inventory system is an afterthought, no pre-warning that they're low on stock 
+Gym owners have reported experiencing the following issues with software they're currently using:
 
-The main goal with this project is to help gym owners manage their businesses with more efficiency by creating a system that is more proactive rather than reactive.
+- Many customers still pay in cash, but their systems are designed only for card payments, resulting in separate handwritten records.
 
+- Their systems lack flexibility for tracking temporary freezes or adjustments to memberships.
+
+- Inventory tracking (e.g., for drinks or supplements) is inconsistent, with no easy way to monitor stock levels.
+
+The main goal of this project is to help gym owners manage their businesses with greater efficiency and accuracy, providing a system that proactively assists with daily operations rather than reacting to problems.
+
+---
 
 ### Scope
-This system is a "back-office" management software designed specifically for gym owners and staff. The core purpose is to streamline daily operations and to provide deep business insights.  
+This system is a "back-office" management software designed specifically for gym owners and staff. The core purpose is to streamline daily operations and provide clear visibility of membership and payment data.
 
-Features to be developed:  
-Core memebership & operations
-- Dashboard: At a glance view of key meetrics (days's revenue, low stock alerts)
-- Member management: profile view, QR code check-in
-- Payment processing  
-- Referal systemop0
+Core Membership & Operations
 
-Business insights:
-- Suuplement profitability
-- Membership plan performance
-- Predictive insights (at-risk member flagging, resource / inventory forecasting)
+- Dashboard: Overview of key metrics (active members, today’s revenue, total memberships).  
+- Member Management: Add, edit, and view member profiles including contact and emergency information.  
+- Payment Records: Record and view payments, track amounts due, and identify overdue members.  
+- Membership Plans: Assign members to plans (e.g., monthly, annual) with start and expiry dates.  
+- Attendance Tracking: Log and monitor member check-ins.  
+
+Business Insights
+
+- Membership Statistics: Overview of how many members are active, inactive, or frozen.  
+- Revenue Tracking: Breakdown of income from memberships and other payments.  
+
+Future Developments
+
+- Inventory Management: Track sales and stock of supplements or merchandise.  
+- Referral System: Allow members to refer friends and earn rewards.  
+- Guest Pass System: Manage guest entries and conversions to full members.  
+- Predictive Insights: Identify at-risk members or forecast stock needs.  
+- QR/Barcode Check-In: Optional feature for quick access at the front desk.  
+---
 
 ### Structure
 The following will show different user flows when using the system.  
