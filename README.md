@@ -7,6 +7,19 @@ This is a gym management platform designed to provide a reliable backend archite
 
 ## UX Design
 
+### User Stories 
+
+As a Gym Owner, I want to add new members with their contact and emergency information so that I can grow my member base safely and maintain proper records.  
+
+As a Gym Owner, I want to assign members to different membership plans with start and expiry dates so that I can manage different pricing tiers and automate renewals.  
+
+As a Staff Member, I want to search for and view a member's full profile so that I can quickly access their contact details and emergency information when needed.  
+
+As a Staff Member, I want to log a member's check-in so that I can track attendance and know who is currently in the gym.  
+
+As a Staff Member, I want to record a payment against a member's account so that I can keep their membership active and track revenue.
+
+---
 ### Stratergy  
 The main users of this platform are the owners and staff of gyms. Users can view and manage gym members, update their membership details, and handle payment records. The system aims to reduce manual paperwork and make gym administration more efficient and data-driven.
 
@@ -150,3 +163,5 @@ Button Text: 16px, Medium, White.
 4. Imagery & Icons
 Icons: Heroicons or Feather Icons. Outline style for a clean, modern feel. Consistent stroke width.  
 Member Photos: Circular thumbnails. If no photo is provided, a default silhouette icon is used against a gradient background.
+
+---
