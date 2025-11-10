@@ -19,6 +19,18 @@ As a Staff Member, I want to log a member's check-in so that I can track attenda
 
 As a Staff Member, I want to record a payment against a member's account so that I can keep their membership active and track revenue.
 
+
+## Entity Relationship Diagram (ERD)
+
+The following diagram represents the database structure for the Gym Membership Tracker.  
+It illustrates how the main entities — GymOwner, Member, MembershipPlan, Payment, and Attendance — relate to each other.
+
+- Each **GymOwner** can have multiple **Members**.  
+- Each **Member** belongs to one **GymOwner** and one **MembershipPlan**.  
+- Each **Member** can have multiple **Payments** and **Attendance** records.
+
+![ERD Diagram](assets/wireframes/erd.png)
+
 ---
 ### Stratergy  
 The main users of this platform are the owners and staff of gyms. Users can view and manage gym members, update their membership details, and handle payment records. The system aims to reduce manual paperwork and make gym administration more efficient and data-driven.
@@ -160,7 +172,8 @@ Secondary Text / Labels: 14px, Regular, #b3b3b3.
 Button Text: 16px, Medium, White.
 
 ---
-4. Imagery & Icons
+4. Imagery & Icons  
+
 Icons: Heroicons or Feather Icons. Outline style for a clean, modern feel. Consistent stroke width.  
 Member Photos: Circular thumbnails. If no photo is provided, a default silhouette icon is used against a gradient background.
 
