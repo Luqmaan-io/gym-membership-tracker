@@ -1,1 +1,1 @@
-web: gunicorn gym-membership-tracker.wsgi
+web: gunicorn my_project.wsgi
