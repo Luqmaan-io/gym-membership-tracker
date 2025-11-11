@@ -1,0 +1,1 @@
+web: gunicorn gym-membership-tracker.wsgi
