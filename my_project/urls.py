@@ -18,9 +18,11 @@ from django.contrib import admin
 from django.urls import path, include
 from gym import views as index_views
 from about import views as about_views
+from members import views as members_views
 
 urlpatterns = [
     path('gym/', index_views.index, name='index'),
     path('about/', about_views.about, name='about'),
+    path('members/', members_views.members, name='members'),
     path('admin/', admin.site.urls),
 ]
