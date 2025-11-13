@@ -21,6 +21,7 @@ from about import views as about_views
 from members import views as members_views
 from memberships import views as memeberships_views
 from attendance import views as attendance_views
+from payments import views as payments_views
 
 
 urlpatterns = [
@@ -29,5 +30,6 @@ urlpatterns = [
     path('members/', members_views.members, name='members'),
     path('memberships/', memeberships_views.memberships, name='memberships'),
     path('attendance/', attendance_views.attendance, name='attendance'),
+    path('payments/', payments_views.payments, name='payments'),
     path('admin/', admin.site.urls),
 ]
