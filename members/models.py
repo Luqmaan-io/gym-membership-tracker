@@ -6,7 +6,7 @@ MEMBER_STATUS = ((0, "Inactive"), (1, "Active"), (2, "Suspended"), (3, "Frozen")
 
 class Member(models.Model):
     gym = models.ForeignKey(
-        Gym, on_delete=models.PROTECT, related_name="members"
+        Gym, on_delete=models.CASCADE, related_name="members"
     )
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
