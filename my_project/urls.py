@@ -26,7 +26,7 @@ from payments import views as payments_views
 urlpatterns = [
     path('', include('about.urls')),
     path('gym/', index_views.index, name='index'),
-    path('members/', members_views.members, name='members'),
+    path('members/', include('members.urls')),
     path('memberships/', memeberships_views.memberships, name='memberships'),
     path('attendance/', attendance_views.attendance, name='attendance'),
     path('payments/', payments_views.payments, name='payments'),
