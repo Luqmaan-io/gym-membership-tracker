@@ -1,5 +1,4 @@
-from django.shortcuts import render
-from django.http import HttpResponse
-# Create your views here.
-def about(request):
-    return HttpResponse("This would be the about page")
+from django.views.generic import TemplateView
+
+class Index(TemplateView):
+    template_name = 'about/index.html'
