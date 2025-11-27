@@ -3,6 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.http import HttpResponse
 
+def members(request):
+    return HttpResponse("Members page coming soon!")
 
 def custom_login(request):
     # If user is already logged in, redirect them
