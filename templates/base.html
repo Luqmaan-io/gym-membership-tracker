@@ -11,44 +11,111 @@
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container">
-            <a class="navbar-brand fw-bold" href="/">Gym Flow</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <!-- Brand/Logo -->
+            <a class="navbar-brand fw-bold" href="/">
+                Gym Flow
+            </a>
+            
+            <!-- Mobile Toggle Button -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
+            
+            <!-- Navbar Content -->
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
+                <!-- Left Side: Navigation Links -->
+                <ul class="navbar-nav me-auto">
+                    <!-- Always show Home -->
                     <li class="nav-item">
-                        <a class="nav-link" href="/#features">Features</a>
+                        <a class="nav-link" href="/">Home</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#about">About Us</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="/#pricing">Pricing</a>
-                    </li>
-                </ul>
-                <ul class="navbar-nav ms-auto">
+                    
                     {% if user.is_authenticated %}
-                    <!-- Logged in user -->
+                    <!-- ============ LOGGED IN ============ -->
+                    <!-- Gym Owner Navigation -->
                     <li class="nav-item">
-                        <span class="navbar-text me-3">
-                            {% if user.first_name %}
-                                👋 Hello, {{ user.first_name }}
-                            {% else %}
-                                👋 Hello, {{ user.username }}
-                            {% endif %}
-                        </span>
+                        <a class="nav-link" href="{% url 'members:dashboard' %}">
+                            Dashboard
+                        </a>
                     </li>
                     <li class="nav-item">
-                        <form method="post" action="{% url 'logout' %}" class="d-inline">
-                            {% csrf_token %}
-                            <button type="submit" class="btn btn-outline-light btn-sm">Logout</button>
-                        </form>
+                        <a class="nav-link" href="#">
+                            Members
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Payments
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">
+                            Reports
+                        </a>
                     </li>
                     {% else %}
-                    <!-- Not logged in -->
+                    <!-- ============ LOGGED OUT ============ -->
+                    <!-- Marketing Navigation -->
                     <li class="nav-item">
-                        <a class="nav-link" href="{% url 'members:login' %}">Login</a>
+                        <a class="nav-link" href="/#features">
+                            Features
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#about">
+                            About Us
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/#pricing">
+                            Pricing
+                        </a>
+                    </li>
+                    {% endif %}
+                </ul>
+                
+                <!-- Right Side: User Actions -->
+                <ul class="navbar-nav ms-auto">
+                    {% if user.is_authenticated %}
+                    <!-- ============ LOGGED IN USER MENU ============ -->
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span class="me-2">
+                                {% if user.first_name %}
+                                    👋 Hello, {{ user.first_name }}
+                                {% else %}
+                                    👋 Hello, {{ user.username }}
+                                {% endif %}
+                            </span>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    My Profile
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Settings
+                                </a>
+                            </li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li>
+                                <form method="post" action="{% url 'logout' %}" class="d-inline p-0 m-0">
+                                    {% csrf_token %}
+                                    <button type="submit" class="dropdown-item text-danger">
+                                        Logout
+                                    </button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
+                    {% else %}
+                    <!-- ============ LOGIN BUTTON ============ -->
+                    <li class="nav-item">
+                        <a class="btn btn-primary" href="{% url 'members:login' %}">
+                            Gym Owner Login
+                        </a>
                     </li>
                     {% endif %}
                 </ul>
