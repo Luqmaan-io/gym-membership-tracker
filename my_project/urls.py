@@ -16,6 +16,7 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.contrib.auth import views as auth_views
 from gym import views as index_views
 from members import views as members_views
 from memberships import views as memeberships_views
@@ -31,4 +32,5 @@ urlpatterns = [
     path('attendance/', attendance_views.attendance, name='attendance'),
     path('payments/', payments_views.payments, name='payments'),
     path('admin/', admin.site.urls),
+    path('logout/', auth_views.LogoutView.as_view(), name='logout')
 ]
