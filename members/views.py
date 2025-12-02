@@ -28,3 +28,6 @@ def custom_login(request):
     
     # If GET request or failed login, show the login form
     return render(request, 'members/login.html')
+
+def dashboard(request):
+    return render(request, 'members/dashboard.html')
