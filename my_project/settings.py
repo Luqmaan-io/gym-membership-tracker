@@ -137,5 +137,8 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# Redirect to admin dashboard after login
+LOGIN_REDIRECT_URL = '/admin/'
+
 # Redirect to homepage after logout
 LOGOUT_REDIRECT_URL = '/'  

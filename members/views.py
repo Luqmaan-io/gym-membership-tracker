@@ -22,7 +22,12 @@ def custom_login(request):
             # Login the user
             login(request, user)
             messages.success(request, f'Welcome back, {username}!')
-            return redirect('home')  # Redirect to homepage after login
+            
+            # Smart redirect: admins go to admin panel, gym owners go to dashboard
+            if user.is_staff or user.is_superuser:
+                return redirect('/admin/')  # Admin users go to Django admin
+            else:
+                return redirect('members:dashboard')  # Gym owners go to dashboard
         else:
             messages.error(request, 'Invalid username or password. Please try again.')
     
