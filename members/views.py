@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
-from django.contrib.auth import authenticate, login
+from django.shortcuts import render, redirect, get_object_or_404
+from django.contrib.auth import authenticate, login, login_required
 from django.contrib import messages
 from django.http import HttpResponse
+from .models import members, gym
 
 def members(request):
     return HttpResponse("Members page coming soon!")
@@ -36,3 +37,19 @@ def custom_login(request):
 
 def dashboard(request):
     return render(request, 'members/dashboard.html')
+
+# === Gym owner - member CRUD views ===
+
+@login_required
+def member_list(request):
+    """Display all members for the logged-in gym owner"""
+    # Get the gym owned by the current user
+    # Assuming each user has one gym they own
+    gym = get_object_or_404(Gym, owner=request.user)
+    members = Member.objects.filter(gym=gym)
+    
+    context = {
+        'members': members,
+        'gym': gym,
+    }
+    return render(request, 'members/member_list.html', context)
