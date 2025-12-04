@@ -14,4 +14,4 @@ urlpatterns = [
     path('members/<int:member_id>/edit/', views.member_update, name='member_update'),
     path('members/<int:member_id>/delete/', views.member_delete, name='member_delete'),
 ]
-]
+
