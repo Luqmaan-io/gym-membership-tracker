@@ -1,0 +1,101 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <div class="d-flex justify-content-between align-items-center">
+                        <h3>Member Details</h3>
+                        <a href="{% url 'members:member_list' %}" class="btn btn-light btn-sm">
+                            ← Back to List
+                        </a>
+                    </div>
+                </div>
+                <div class="card-body">
+                    {% if member %}
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Personal Information</h5>
+                            <table class="table">
+                                <tr>
+                                    <th>Name:</th>
+                                    <td>{{ member.first_name }} {{ member.last_name }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Email:</th>
+                                    <td>{{ member.email }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone:</th>
+                                    <td>{{ member.phone_number }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Date of Birth:</th>
+                                    <td>{{ member.date_of_birth|date:"d M Y" }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        <div class="col-md-6">
+                            <h5>Membership Details</h5>
+                            <table class="table">
+                                <tr>
+                                    <th>Status:</th>
+                                    <td>
+                                        {% if member.status == 1 %}
+                                        <span class="badge bg-success">Active</span>
+                                        {% elif member.status == 0 %}
+                                        <span class="badge bg-secondary">Inactive</span>
+                                        {% elif member.status == 2 %}
+                                        <span class="badge bg-warning">Suspended</span>
+                                        {% elif member.status == 3 %}
+                                        <span class="badge bg-info">Frozen</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <th>Joined:</th>
+                                    <td>{{ member.date_joined|date:"d M Y" }}</td>
+                                </tr>
+                            </table>
+                            
+                            <h5 class="mt-4">Emergency Contact</h5>
+                            <table class="table">
+                                <tr>
+                                    <th>Contact:</th>
+                                    <td>{{ member.emergency_contact }}</td>
+                                </tr>
+                                <tr>
+                                    <th>Phone:</th>
+                                    <td>{{ member.emergency_phone_number }}</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-4 d-flex justify-content-between">
+                        <a href="{% url 'members:member_update' member.id %}" class="btn btn-warning">
+                            Edit Member
+                        </a>
+                        <a href="{% url 'members:member_delete' member.id %}" class="btn btn-danger">
+                            Delete Member
+                        </a>
+                    </div>
+                    
+                    {% else %}
+                    <div class="alert alert-warning">
+                        <p>Member not found.</p>
+                        <a href="{% url 'members:member_list' %}" class="btn btn-primary">
+                            Back to Member List
+                        </a>
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
