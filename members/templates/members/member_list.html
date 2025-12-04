@@ -33,6 +33,7 @@
                     <th>Name</th>
                     <th>Email</th>
                     <th>Phone</th>
+                    <th>Membership Plan</th>
                     <th>Status</th>
                     <th>Joined</th>
                     <th>Actions</th>
@@ -44,6 +45,13 @@
                     <td>{{ member.first_name }} {{ member.last_name }}</td>
                     <td>{{ member.email }}</td>
                     <td>{{ member.phone_number }}</td>
+                    <td>
+                        {% if member.membership_plan %}
+                            <span class="badge bg-info">{{ member.membership_plan.plan_name }}</span>
+                        {% else %}
+                            <span class="text-muted">No plan</span>
+                        {% endif %}
+                    </td>
                     <td>
                         {% if member.status == 1 %}
                         <span class="badge bg-success">Active</span>

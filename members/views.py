@@ -96,6 +96,7 @@ def member_update(request, member_id):
     """Update an existing member"""
     gym = get_object_or_404(Gym, owner=request.user)
     member = get_object_or_404(Member, id=member_id, gym=gym)
+    plans = MembershipPlan.objects.filter(gym=gym, status=1)
     
     if request.method == 'POST':
         # Update member fields
@@ -109,6 +110,18 @@ def member_update(request, member_id):
         member.status = request.POST.get('status', member.status)
         member.save()
         
+        plan_id = request.POST.get('membership_plan')
+        if plan_id:  # If a plan was selected
+            try:
+                plan = MembershipPlan.objects.get(id=plan_id, gym=gym)
+                member.membership_plan = plan
+            except MembershipPlan.DoesNotExist:
+                member.membership_plan = None
+        else:
+            member.membership_plan = None
+
+        member.save()
+
         messages.success(request, f'Member {member.first_name} updated successfully!')
         return redirect('members:member_list')
     
@@ -117,6 +130,7 @@ def member_update(request, member_id):
         'member': member,
         'gym': gym,
         'status_choices': Member._meta.get_field('status').choices,
+        'plans': plans,
         'is_update': True,  
     }
     return render(request, 'members/member_form.html', context)

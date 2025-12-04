@@ -60,6 +60,18 @@
                                     <th>Joined:</th>
                                     <td>{{ member.date_joined|date:"d M Y" }}</td>
                                 </tr>
+                                <tr>
+                                    <th>Membership Plan:</th>
+                                    <td>
+                                        {% if member.membership_plan %}
+                                            <strong>{{ member.membership_plan.plan_name }}</strong><br>
+                                            <small>Price: £{{ member.membership_plan.price }}</small><br>
+                                            <small>Duration: {{ member.membership_plan.duration_months }} months</small>
+                                        {% else %}
+                                            <span class="text-muted">No plan assigned</span>
+                                        {% endif %}
+                                    </td>
+                                </tr>
                             </table>
                             
                             <h5 class="mt-4">Emergency Contact</h5>
