@@ -110,7 +110,7 @@ def member_update(request, member_id):
     context = {
         'member': member,
         'gym': gym,
-        'status_choices': Member.MEMBER_STATUS,
+        'status_choices': Member._meta.get_field('status').choices,
         'is_update': True,  
     }
     return render(request, 'members/member_form.html', context)
@@ -143,5 +143,6 @@ def member_detail(request, member_id):
     context = {
         'member': member,
         'gym': gym,
+        'status_choices': MEMBER_STATUS,
     }
     return render(request, 'members/member_detail.html', context)
