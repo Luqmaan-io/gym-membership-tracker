@@ -1,6 +1,7 @@
 from django.db import models
 from gym.models import Gym
 
+
 # Create your models here.
 MEMBER_STATUS = ((0, "Inactive"), (1, "Active"), (2, "Suspended"), (3, "Frozen"))
 
@@ -17,6 +18,14 @@ class Member(models.Model):
     emergency_phone_number = models.CharField(max_length=20)
     date_joined = models.DateTimeField(auto_now_add=True)
     status = models.IntegerField(choices=MEMBER_STATUS, default=1)
+
+    membership_plan = models.ForeignKey(
+        'memberships.MembershipPlan',  # ← String reference
+        on_delete=models.SET_NULL,
+        null=True,
+        blank=True,
+        related_name="members_with_plan"
+    )
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"

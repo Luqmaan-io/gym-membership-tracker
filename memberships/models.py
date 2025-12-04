@@ -1,6 +1,5 @@
 from django.db import models
 from gym.models import Gym
-from members.models import Member
 
 # Create your models here.
 PLAN_STATUS = ((0, "Inactive"), (1, "Active"))
@@ -26,7 +25,9 @@ MEMBERSHIP_STATUS = ((0, "Expired"), (1, "Active"), (2, "Cancelled"))
 
 class Membership(models.Model):
     member = models.ForeignKey(
-        Member, on_delete=models.CASCADE, related_name="memberships"
+        'members.Member',  # ← STRING REFERENCE, not import
+        on_delete=models.CASCADE, 
+        related_name="memberships"
     )
     membership_plan = models.ForeignKey(
         MembershipPlan, on_delete=models.PROTECT, related_name="memberships"

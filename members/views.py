@@ -4,6 +4,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.http import HttpResponse
 from .models import Member, Gym, MEMBER_STATUS
+from memberships.models import MembershipPlan
 
 def members(request):
     return HttpResponse("Members page coming soon!")
@@ -62,6 +63,8 @@ def member_create(request):
     """Create a new member"""
     gym = get_object_or_404(Gym, owner=request.user)
     
+    # Get active membership plans for this gym
+    plans = MembershipPlan.objects.filter(gym=gym, status=1)
     if request.method == 'POST':
         member = Member(
             gym=gym,
@@ -72,7 +75,8 @@ def member_create(request):
             date_of_birth=request.POST.get('date_of_birth'),
             emergency_contact=request.POST.get('emergency_contact'),
             emergency_phone_number=request.POST.get('emergency_phone_number'),
-            status=request.POST.get('status', 1)  
+            status=request.POST.get('status', 1),
+            membership_plan_id=request.POST.get('membership_plan') or None,  
         )
         member.save()
         messages.success(request, f'Member {member.first_name} {member.last_name} added successfully!')
@@ -81,7 +85,9 @@ def member_create(request):
     # If GET request, show the form
     context = {
         'gym': gym,
+        'plans': plans,
         'status_choices': MEMBER_STATUS,
+
     }
     return render(request, 'members/member_form.html', context)
 

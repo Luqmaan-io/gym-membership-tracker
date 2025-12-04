@@ -74,6 +74,20 @@
                                        value="{% if member %}{{ member.emergency_phone_number }}{% endif %}" required>
                             </div>
                         </div>
+
+                        <!-- dropdown for membership plans -->
+                        <div class="mb-3">
+                            <label for="membership_plan" class="form-label">Membership Plan (Optional)</label>
+                            <select class="form-select" id="membership_plan" name="membership_plan">
+                                <option value="">-- No Plan Selected --</option>
+                                {% for plan in plans %}
+                                <option value="{{ plan.id }}" 
+                                        {% if member and member.membership_plan.id == plan.id %}selected{% endif %}>
+                                    {{ plan.plan_name }} - £{{ plan.price }} ({{ plan.duration_months }} months)
+                                </option>
+                                {% endfor %}
+                            </select>
+                        </div>
                         
                         <div class="mb-3">
                             <label for="status" class="form-label">Membership Status</label>
