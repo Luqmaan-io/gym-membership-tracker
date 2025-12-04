@@ -20,7 +20,7 @@
     <!-- Add Member Button -->
     <div class="mb-4">
         <a href="{% url 'members:member_create' %}" class="btn btn-success">
-            ➕ Add New Member
+            Add New Member
         </a>
     </div>
     
@@ -58,9 +58,9 @@
                     <td>{{ member.date_joined|date:"d M Y" }}</td>
                     <td>
                         <div class="btn-group" role="group">
-                            <a href="{% url 'members:member_detail' member.id %}" class="btn btn-sm btn-info">👁️ View</a>
-                            <a href="{% url 'members:member_update' member.id %}" class="btn btn-sm btn-warning">✏️ Edit</a>
-                            <a href="{% url 'members:member_delete' member.id %}" class="btn btn-sm btn-danger">🗑️ Delete</a>
+                            <a href="{% url 'members:member_detail' member.id %}" class="btn btn-sm btn-info"> View</a>
+                            <a href="{% url 'members:member_update' member.id %}" class="btn btn-sm btn-warning"> Edit</a>
+                            <a href="{% url 'members:member_delete' member.id %}" class="btn btn-sm btn-danger"> Delete</a>
                         </div>
                     </td>
                 </tr>

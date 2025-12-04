@@ -1,0 +1,106 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <h3>
+                        {% if is_update %}
+                            ✏️ Edit Member
+                        {% else %}
+                            Add New Member
+                        {% endif %}
+                    </h3>
+                </div>
+                <div class="card-body">
+                    <!-- Success/Error Messages -->
+                    {% if messages %}
+                    <div class="messages mb-4">
+                        {% for message in messages %}
+                        <div class="alert alert-{% if message.tags == 'error' %}danger{% else %}success{% endif %} alert-dismissible fade show">
+                            {{ message }}
+                            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                        </div>
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="first_name" class="form-label">First Name*</label>
+                                <input type="text" class="form-control" id="first_name" name="first_name" 
+                                       value="{% if member %}{{ member.first_name }}{% endif %}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="last_name" class="form-label">Last Name*</label>
+                                <input type="text" class="form-control" id="last_name" name="last_name" 
+                                       value="{% if member %}{{ member.last_name }}{% endif %}" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email Address*</label>
+                            <input type="email" class="form-control" id="email" name="email" 
+                                   value="{% if member %}{{ member.email }}{% endif %}" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="phone_number" class="form-label">Phone Number*</label>
+                            <input type="text" class="form-control" id="phone_number" name="phone_number" 
+                                   value="{% if member %}{{ member.phone_number }}{% endif %}" required>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="date_of_birth" class="form-label">Date of Birth*</label>
+                            <input type="date" class="form-control" id="date_of_birth" name="date_of_birth" 
+                                   value="{% if member %}{{ member.date_of_birth|date:'Y-m-d' }}{% endif %}" required>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col-md-6">
+                                <label for="emergency_contact" class="form-label">Emergency Contact Name*</label>
+                                <input type="text" class="form-control" id="emergency_contact" name="emergency_contact" 
+                                       value="{% if member %}{{ member.emergency_contact }}{% endif %}" required>
+                            </div>
+                            <div class="col-md-6">
+                                <label for="emergency_phone_number" class="form-label">Emergency Phone*</label>
+                                <input type="text" class="form-control" id="emergency_phone_number" name="emergency_phone_number" 
+                                       value="{% if member %}{{ member.emergency_phone_number }}{% endif %}" required>
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="status" class="form-label">Membership Status</label>
+                            <select class="form-select" id="status" name="status">
+                                <option value="1" {% if member and member.status == 1 %}selected{% endif %}>Active</option>
+                                <option value="0" {% if member and member.status == 0 %}selected{% endif %}>Inactive</option>
+                                <option value="2" {% if member and member.status == 2 %}selected{% endif %}>Suspended</option>
+                                <option value="3" {% if member and member.status == 3 %}selected{% endif %}>Frozen</option>
+                            </select>
+                        </div>
+                        
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'members:member_list' %}" class="btn btn-secondary">
+                                ↩️ Cancel
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                {% if is_update %}
+                                     Update Member
+                                {% else %}
+                                     Add Member
+                                {% endif %}
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

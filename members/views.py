@@ -3,7 +3,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required 
 from django.contrib import messages
 from django.http import HttpResponse
-from .models import Member, Gym
+from .models import Member, Gym, MEMBER_STATUS
 
 def members(request):
     return HttpResponse("Members page coming soon!")
@@ -38,6 +38,8 @@ def custom_login(request):
 
 def dashboard(request):
     return render(request, 'members/dashboard.html')
+
+
 
 # === Gym owner - member CRUD views ===
 
@@ -79,7 +81,7 @@ def member_create(request):
     # If GET request, show the form
     context = {
         'gym': gym,
-        'status_choices': Member.MEMBER_STATUS,
+        'status_choices': MEMBER_STATUS,
     }
     return render(request, 'members/member_form.html', context)
 
