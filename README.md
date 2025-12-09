@@ -4,6 +4,7 @@
 This application is intended to be used by owners and staff of gyms in order to keep up to date with their members and their memberships to those gyms as well as storing key contact information needed for communication or emergencies.
 
 This is a gym management platform designed to provide a reliable backend architecture for handling essential gym operations such as membership tracking, payment records, and attendance logging. The focus of this project is on functionality, maintainability, and data structure, creating a scalable foundation that can be expanded with additional features in the future.
+
 ---
 
 ## Features
@@ -20,6 +21,32 @@ This is a gym management platform designed to provide a reliable backend archite
 - 🔄 Attendance logging with check-in system
 - 🔄 Reports and analytics dashboard
 - 🔄 Inventory management for supplements
+
+---
+## Database Schema
+
+The application uses PostgreSQL with the following models:
+
+### Gym Model
+- `name`: Gym name
+- `address`: Physical location
+- `owner`: ForeignKey to User (one gym per owner)
+
+### Member Model  
+- `first_name`, `last_name`: Member's name
+- `email`, `phone_number`: Contact details
+- `date_of_birth`: Date of birth
+- `emergency_contact`: Emergency contact info
+- `membership_plan`: ForeignKey to MembershipPlan (optional)
+- `status`: Active/Inactive/Suspended/Frozen
+- `date_joined`: Auto-generated timestamp
+
+### MembershipPlan Model
+- `plan_name`: Name of the plan (e.g., "Premium Monthly")
+- `duration_months`: Duration in months
+- `price`: Monthly/annual price
+- `status`: Active/Inactive
+- `gym`: ForeignKey to Gym
 
 
 ## UX Design
