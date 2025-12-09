@@ -4,6 +4,23 @@
 This application is intended to be used by owners and staff of gyms in order to keep up to date with their members and their memberships to those gyms as well as storing key contact information needed for communication or emergencies.
 
 This is a gym management platform designed to provide a reliable backend architecture for handling essential gym operations such as membership tracking, payment records, and attendance logging. The focus of this project is on functionality, maintainability, and data structure, creating a scalable foundation that can be expanded with additional features in the future.
+---
+
+## Features
+
+### Implemented Features
+- ✅ **Member Management**: Add, view, edit, and delete gym members
+- ✅ **Membership Plans**: Create different membership tiers with pricing
+- ✅ **Authentication**: Gym owner login/logout with session management
+- ✅ **Responsive Design**: Works on desktop, tablet, and mobile
+- ✅ **CRUD Operations**: Full Create, Read, Update, Delete functionality
+
+### Future Features
+- 🔄 Payment tracking and invoicing
+- 🔄 Attendance logging with check-in system
+- 🔄 Reports and analytics dashboard
+- 🔄 Inventory management for supplements
+
 
 ## UX Design
 
@@ -52,7 +69,7 @@ The main goal of this project is to help gym owners manage their businesses with
 ### Scope
 This system is a "back-office" management software designed specifically for gym owners and staff. The core purpose is to streamline daily operations and provide clear visibility of membership and payment data.
 
-Core Membership & Operations
+#### Core Membership & Operations
 
 - Dashboard: Overview of key metrics (active members, today’s revenue, total memberships).  
 - Member Management: Add, edit, and view member profiles including contact and emergency information.  
@@ -60,12 +77,12 @@ Core Membership & Operations
 - Membership Plans: Assign members to plans (e.g., monthly, annual) with start and expiry dates.  
 - Attendance Tracking: Log and monitor member check-ins.  
 
-Business Insights
+#### Business Insights
 
 - Membership Statistics: Overview of how many members are active, inactive, or frozen.  
 - Revenue Tracking: Breakdown of income from memberships and other payments.  
 
-Future Developments
+#### Future Developments
 
 - Inventory Management: Track sales and stock of supplements or merchandise.  
 - Referral System: Allow members to refer friends and earn rewards.  
@@ -76,8 +93,6 @@ Future Developments
 
 ### Structure
 The following will show different user flows when using the system.  
-
----
 
 1. Daily Member Check-In (Front Desk Staff)  
 
