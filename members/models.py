@@ -20,7 +20,7 @@ class Member(models.Model):
     status = models.IntegerField(choices=MEMBER_STATUS, default=1)
 
     membership_plan = models.ForeignKey(
-        'memberships.MembershipPlan',  # ← String reference
+        'memberships.MembershipPlan', 
         on_delete=models.SET_NULL,
         null=True,
         blank=True,

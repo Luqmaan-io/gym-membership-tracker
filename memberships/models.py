@@ -25,7 +25,7 @@ MEMBERSHIP_STATUS = ((0, "Expired"), (1, "Active"), (2, "Cancelled"))
 
 class Membership(models.Model):
     member = models.ForeignKey(
-        'members.Member',  # ← STRING REFERENCE, not import
+        'members.Member',
         on_delete=models.CASCADE, 
         related_name="memberships"
     )

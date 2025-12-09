@@ -31,22 +31,34 @@ The application uses PostgreSQL with the following models:
 - `name`: Gym name
 - `address`: Physical location
 - `owner`: ForeignKey to User (one gym per owner)
+- `phone_number`, `email`: Contact details
+- `date_joined`: Auto-generated timestamp
+- `is_active`: Active/Inactive
 
 ### Member Model  
+- `membership_plan`: ForeignKey to MembershipPlan
 - `first_name`, `last_name`: Member's name
 - `email`, `phone_number`: Contact details
 - `date_of_birth`: Date of birth
 - `emergency_contact`: Emergency contact info
-- `membership_plan`: ForeignKey to MembershipPlan (optional)
 - `status`: Active/Inactive/Suspended/Frozen
 - `date_joined`: Auto-generated timestamp
 
 ### MembershipPlan Model
+- `gym`: Foreignkey to Gym
 - `plan_name`: Name of the plan (e.g., "Premium Monthly")
 - `duration_months`: Duration in months
 - `price`: Monthly/annual price
+- `description`: Describes the benefits of the membership plan and it's duration
 - `status`: Active/Inactive
-- `gym`: ForeignKey to Gym
+
+### Membership Modal
+- `member`: Foreginkey to member
+- `membership_plan`: Foreginkey to MembershipPlan
+- `start_date`: Start of the membershio
+- `end_date`: End of the membership
+- `created_on`: Timestamp of when the membership was made
+- `status`: Active/Inactive
 
 
 ## UX Design
