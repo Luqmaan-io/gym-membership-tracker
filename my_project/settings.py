@@ -9,9 +9,11 @@ https://docs.djangoproject.com/en/5.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.2/ref/settings/
 """
+from dotenv import load_dotenv
+load_dotenv()
 
-from pathlib import Path
 import os
+from pathlib import Path
 import dj_database_url
 if os.path.isfile('env.py'):
     import env
@@ -24,10 +26,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-^4u_!n$2ds!i=huo6+5n9sjpdo5!no6m&nz!+!6gl#853&+4(q'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-^4u_!n$2ds!i=huo6+5n9sjpdo5!no6m&nz!+!6gl#853&+4(q')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['.herokuapp.com',
                  '127.0.0.1',
