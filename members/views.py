@@ -3,7 +3,8 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required 
 from django.contrib import messages
 from django.http import HttpResponse
-from .models import Member, Gym, MEMBER_STATUS
+from .models import Member, MEMBER_STATUS
+from gym.models import Gym 
 from memberships.models import MembershipPlan
 
 def members(request):
