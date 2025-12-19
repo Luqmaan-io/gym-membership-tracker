@@ -6,6 +6,7 @@ from django.http import HttpResponse
 from .models import Member, MEMBER_STATUS
 from gym.models import Gym 
 from memberships.models import MembershipPlan
+from .forms import MemberForm 
 
 def members(request):
     return HttpResponse("Members page coming soon!")
@@ -64,31 +65,27 @@ def member_create(request):
     """Create a new member"""
     gym = get_object_or_404(Gym, owner=request.user)
     
-    # Get active membership plans for this gym
-    plans = MembershipPlan.objects.filter(gym=gym, status=1)
     if request.method == 'POST':
-        member = Member(
-            gym=gym,
-            first_name=request.POST.get('first_name'),
-            last_name=request.POST.get('last_name'),
-            email=request.POST.get('email'),
-            phone_number=request.POST.get('phone_number'),
-            date_of_birth=request.POST.get('date_of_birth'),
-            emergency_contact=request.POST.get('emergency_contact'),
-            emergency_phone_number=request.POST.get('emergency_phone_number'),
-            status=request.POST.get('status', 1),
-            membership_plan_id=request.POST.get('membership_plan') or None,  
-        )
-        member.save()
-        messages.success(request, f'Member {member.first_name} {member.last_name} added successfully!')
-        return redirect('members:member_list')
+        # Create form with POST data and user context
+        form = MemberForm(request.POST, user=request.user)
+        if form.is_valid():
+            member = form.save()
+            messages.success(request, f'Member {member.first_name} {member.last_name} added successfully!')
+            return redirect('members:member_list')
+        else:
+            # Validation errors
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        # Create empty form for GET request
+        form = MemberForm(user=request.user)
+        # Pre-select the user's gym
+        form.initial['gym'] = gym
     
-    # If GET request, show the form
+    # If GET request or form invalid, show the form
     context = {
-        'gym': gym,
-        'plans': plans,
-        'status_choices': MEMBER_STATUS,
-
+        'form': form,
+        'title': 'Create New Member',
+        'is_create': True,
     }
     return render(request, 'members/member_form.html', context)
 
