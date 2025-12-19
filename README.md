@@ -325,3 +325,35 @@ python manage.py createsuperuser
 ```bash
 python manage.py runserver
 ```  
+
+### Herko deployment
+
+1. **Install Heroku CLI** and login
+
+```bash
+heroku login
+```  
+
+2. **Create Heroku app**
+
+```bash
+heroku create your-app-name
+heroku addons:create heroku-postgresql:hobby-dev
+```  
+
+3. **Set environment variables**
+
+```bash
+heroku config:set DJANGO_SECRET_KEY=your-generated-secret-key
+heroku config:set DJANGO_DEBUG=False
+heroku config:set DISABLE_COLLECTSTATIC=1
+```
+
+4. **Deploy to Heroku**
+
+```bash
+git push heroku main
+heroku run python manage.py migrate
+heroku run python manage.py createsuperuser
+heroku open
+```  
