@@ -10,8 +10,8 @@ This is a gym management platform designed to provide a reliable backend archite
 ## Features
 
 ### Implemented Features
-- ✅ **Member Management**: Add, view, edit, and delete gym members
-- ✅ **Membership Plans**: Create different membership tiers with pricing
+- ✅ **Member Management**: Create, read, update and delete gym members
+- ✅ **Membership Plans**: Create different membership tiers with pricing (In django admin)
 - ✅ **Authentication**: Gym owner login/logout with session management
 - ✅ **Responsive Design**: Works on desktop, tablet, and mobile
 - ✅ **CRUD Operations**: Full Create, Read, Update, Delete functionality
@@ -232,3 +232,37 @@ Icons: Heroicons or Feather Icons. Outline style for a clean, modern feel. Consi
 Member Photos: Circular thumbnails. If no photo is provided, a default silhouette icon is used against a gradient background.
 
 ---
+
+## Testing
+
+Thorough testing was conducted during the development of this application and are detailed as follows:
+
+### Authentication 
+
+- Valid login redirects to dashboard
+- Invalid login shows error message
+- Logout functionality works correctly
+
+### Member Management
+
+- Create new member with valid data
+- Edit member information
+- Delete member with confirmation
+- View member details page
+
+### Form validation
+
+- Required fields enforced
+- Email format validation
+- Phone number acceptance
+
+### User Experience 
+
+- Responsive design on mobile/tablet/desktop
+- Clear success/error messages
+
+---
+
+## Deployment and setup
+
+
