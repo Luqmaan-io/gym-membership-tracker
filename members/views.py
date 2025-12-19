@@ -94,42 +94,26 @@ def member_update(request, member_id):
     """Update an existing member"""
     gym = get_object_or_404(Gym, owner=request.user)
     member = get_object_or_404(Member, id=member_id, gym=gym)
-    plans = MembershipPlan.objects.filter(gym=gym, status=1)
     
     if request.method == 'POST':
-        # Update member fields
-        member.first_name = request.POST.get('first_name')
-        member.last_name = request.POST.get('last_name')
-        member.email = request.POST.get('email')
-        member.phone_number = request.POST.get('phone_number')
-        member.date_of_birth = request.POST.get('date_of_birth')
-        member.emergency_contact = request.POST.get('emergency_contact')
-        member.emergency_phone_number = request.POST.get('emergency_phone_number')
-        member.status = request.POST.get('status', member.status)
-        member.save()
-        
-        plan_id = request.POST.get('membership_plan')
-        if plan_id:  # If a plan was selected
-            try:
-                plan = MembershipPlan.objects.get(id=plan_id, gym=gym)
-                member.membership_plan = plan
-            except MembershipPlan.DoesNotExist:
-                member.membership_plan = None
+        # Update form with POST data, instance, and user
+        form = MemberForm(request.POST, instance=member, user=request.user)
+        if form.is_valid():
+            form.save()
+            messages.success(request, f'Member {member.first_name} {member.last_name} updated successfully!')
+            return redirect('members:member_list')
         else:
-            member.membership_plan = None
-
-        member.save()
-
-        messages.success(request, f'Member {member.first_name} updated successfully!')
-        return redirect('members:member_list')
+            messages.error(request, 'Please correct the errors below.')
+    else:
+        # Pre-fill form with member data
+        form = MemberForm(instance=member, user=request.user)
     
-    # If GET request, show form with current data
+    # Show form for GET or invalid POST
     context = {
+        'form': form,
         'member': member,
-        'gym': gym,
-        'status_choices': Member._meta.get_field('status').choices,
-        'plans': plans,
-        'is_update': True,  
+        'title': f'Edit Member: {member.first_name} {member.last_name}',
+        'is_update': True,
     }
     return render(request, 'members/member_form.html', context)
 
