@@ -1,0 +1,112 @@
+/* static/css/style.css - BASIC STARTER */
+
+/* 1. Your Design System Variables */
+:root {
+    /* Colour Palette */
+    --color-bg-primary: #1a1a1a;
+    --color-bg-secondary: #2d2d2d;
+    --color-card: #2d2d2d;
+    
+    /* Accent Colors */
+    --color-accent-primary: #f5a623;
+    --color-accent-secondary: #4a90e2;
+    
+    /* Status Colors */
+    --color-success: #7ed321;
+    --color-warning: #f5a623;
+    --color-error: #d0021b;
+    
+    /* Text Colors */
+    --color-text-primary: #ffffff;
+    --color-text-secondary: #b3b3b3;
+    
+    /* Typography */
+    --font-family: 'Roboto', sans-serif;
+}
+
+/* 2. Basic Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* 3. Body Styling */
+body {
+    font-family: var(--font-family);
+    background-color: var(--color-bg-primary);
+    color: var(--color-text-primary);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 4. Navbar Customization (matches your design) */
+.navbar-dark {
+    background-color: var(--color-bg-secondary) !important;
+}
+
+.navbar-brand {
+    color: var(--color-text-primary) !important;
+    font-weight: 600;
+}
+
+/* 5. Button Styling */
+.btn-primary {
+    background-color: var(--color-accent-primary) !important;
+    border-color: var(--color-accent-primary) !important;
+}
+
+.btn-primary:hover {
+    background-color: #e6951f !important;
+    border-color: #e6951f !important;
+}
+
+/* 6. Card Styling */
+.card {
+    background-color: var(--color-card);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+}
+
+.card-header {
+    background-color: rgba(255, 255, 255, 0.05) !important;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--color-text-primary);
+}
+
+/* 7. Footer */
+footer {
+    background-color: var(--color-bg-secondary);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    margin-top: auto;
+}
+
+/* 8. Status Badges */
+.badge.bg-success { background-color: var(--color-success) !important; }
+.badge.bg-warning { background-color: var(--color-warning) !important; }
+.badge.bg-danger { background-color: var(--color-error) !important; }
+
+/* 9. Form Controls */
+.form-control {
+    background-color: var(--color-bg-secondary);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: var(--color-text-primary);
+}
+
+.form-control:focus {
+    background-color: var(--color-bg-secondary);
+    border-color: var(--color-accent-secondary);
+    color: var(--color-text-primary);
+}
+
+/* 10. Links */
+a {
+    color: var(--color-accent-secondary);
+    text-decoration: none;
+}
+
+a:hover {
+    color: var(--color-accent-primary);
+    text-decoration: underline;
+}
