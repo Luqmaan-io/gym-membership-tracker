@@ -265,4 +265,63 @@ Thorough testing was conducted during the development of this application and ar
 
 ## Deployment and setup
 
+### Local development setup
 
+1. **Clone the repository**  
+In your terminal:  
+
+```bash
+git clone https://github.com/Luqmaan-io/gym-membership-tracker.git
+cd gym-membership-tracker
+```  
+
+2. **Create virtual environment**
+
+In your terminal:
+
+```bash
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+```  
+
+3. **Install dependencies**
+
+In your terminal:
+
+```bash
+pip install -r requirements.txt
+```  
+
+4. **Setup environment variables**
+
+In your terminal:
+
+```bash
+cp .env.example .env  # Create your own .env file
+# Edit .env with your settings:
+# DJANGO_SECRET_KEY=your-secret-key-here
+# DJANGO_DEBUG=True
+# DATABASE_URL=sqlite:///db.sqlite3
+```  
+
+5. **Run migrations**
+
+In your terminal:
+
+```bash
+python manage.py migrate
+```  
+
+6. **Create superuser**
+
+In your terminal:
+
+```bash
+python manage.py createsuperuser
+```  
+
+7. **Run development server**
+
+```bash
+python manage.py runserver
+```  
