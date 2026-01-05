@@ -28,11 +28,11 @@ This is a gym management platform designed to provide a reliable backend archite
 - User authentication restricts access to staff only
 
 ---
-## Database Schema
+## Database Schema  
 
-The application uses PostgreSQL with the following models:
+The application uses PostgreSQL with the following models:  
 
-### Gym Model
+### Gym Model  
 - `name`: Gym name
 - `address`: Physical location
 - `owner`: ForeignKey to User (one gym per owner)
@@ -49,7 +49,7 @@ The application uses PostgreSQL with the following models:
 - `status`: Active/Inactive/Suspended/Frozen
 - `date_joined`: Auto-generated timestamp
 
-### MembershipPlan Model
+### MembershipPlan Model  
 - `gym`: Foreignkey to Gym
 - `plan_name`: Name of the plan (e.g., "Premium Monthly")
 - `duration_months`: Duration in months
@@ -57,7 +57,7 @@ The application uses PostgreSQL with the following models:
 - `description`: Describes the benefits of the membership plan and it's duration
 - `status`: Active/Inactive
 
-### Membership Modal
+### Membership Modal  
 - `member`: Foreginkey to member
 - `membership_plan`: Foreginkey to MembershipPlan
 - `start_date`: Start of the membershio
@@ -65,6 +65,13 @@ The application uses PostgreSQL with the following models:
 - `created_on`: Timestamp of when the membership was made
 - `status`: Active/Inactive
 
+## Data Schema Rationale  
+The database was designed to reflect real-world gym management needs:
+- **Gym ↔ Member (One-to-Many)**: One gym can have many members
+- **Member ↔ Membership (One-to-Many)**: A member can have multiple membership records over time
+- **MembershipPlan ↔ Membership (One-to-Many)**: A plan can be assigned to many members
+- **Emergency contact fields** included for health & safety compliance
+- **Status tracking** (Active, Frozen, Suspended) allows flexible member management
 
 ## UX Design
 
@@ -235,7 +242,6 @@ Button Text: 16px, Medium, White.
 
 Icons: Heroicons or Feather Icons. Outline style for a clean, modern feel. Consistent stroke width.  
 Member Photos: Circular thumbnails. If no photo is provided, a default silhouette icon is used against a gradient background.
-
 
 ---  
 
