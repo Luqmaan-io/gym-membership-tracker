@@ -198,6 +198,11 @@ It sends the receipt to the connected printer.
 END: Staff hands the receipt to Sarah. The dashboard's "Today's Revenue" updates.
 
 ### Skeleton
+![Home page wireframe](assets/wireframes/wireframe-home.png)
+The image above shows the home page, a simplistic design of the web app that I am trying to go with 
+
+![Members view wireframe](assets/wireframes/wireframe-members.png)
+The image above shows the page where members would be listed
 ---
 ### Surface
 
