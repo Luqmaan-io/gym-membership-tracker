@@ -512,7 +512,22 @@ Consistent experience across breakpoints
 Actual result:  
 Works as expected!  
 
----
+---  
+
+## Code validation
+
+### HTML
+- All HTML was validated using the [W3C Markup Validator](https://validator.w3.org/).  
+- **Initial Issue**: Django template tags (`{% load static %}`) appeared before `<!DOCTYPE html>`.  
+- **Fix**: Right click on webpage, click View Page Source, copy and paste rendered HTML.  
+- **Result**: All HTML code free of errors.  
+![screenshot of HTML validation](assets/images/members-html-validation.png)  
+
+### CSS
+- Custom CSS validated via [W3C CSS Validator (Jigsaw)](https://jigsaw.w3.org/css-validator/)  
+- **No errors found** in custom stylesheets.  
+- **Note**: Bootstrap CSS files were excluded from validation as they are third-party.
+![screenshot of CSS validation](assets/images/css-validation.png)  
 
 ## Deployment and setup
 
