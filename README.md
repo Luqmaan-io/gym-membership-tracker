@@ -22,6 +22,11 @@ This is a gym management platform designed to provide a reliable backend archite
 - 🔄 Reports and analytics dashboard
 - 🔄 Inventory management for supplements
 
+### Security Features
+- All passwords and secret keys stored in environment variables (.env file added to .gitignore)
+- DEBUG mode is set to False in production (Heroku config)
+- User authentication restricts access to staff only
+
 ---
 ## Database Schema
 
@@ -76,7 +81,7 @@ As a Staff Member, I want to log a member's check-in so that I can track attenda
 As a Staff Member, I want to record a payment against a member's account so that I can keep their membership active and track revenue.
 
 
-## Entity Relationship Diagram (ERD)
+### Entity Relationship Diagram (ERD)
 
 The following diagram represents the database structure for the Gym Membership Tracker.  
 It illustrates how the main entities — GymOwner, Member, MembershipPlan, Payment, and Attendance — relate to each other.
@@ -231,7 +236,17 @@ Button Text: 16px, Medium, White.
 Icons: Heroicons or Feather Icons. Outline style for a clean, modern feel. Consistent stroke width.  
 Member Photos: Circular thumbnails. If no photo is provided, a default silhouette icon is used against a gradient background.
 
----
+
+---  
+
+## Design Rationale & UX Justification
+### Why This Design Works for Gym Staff
+- Dark theme (#1a1a1a) reduces eye strain during long shifts
+- Amber accent (#f5a623) draws attention to key actions like "Suspended" badge and warnings
+- Clear visual hierarchy with consistent navigation across all pages
+- Responsive design ensures usability on front-desk tablets and mobile devices  
+
+---   
 
 ## Testing
 
@@ -245,7 +260,7 @@ Thorough testing was conducted during the development of this application and ar
 
 ### **Test 1: Valid Login**
 Steps:  
-Navigate to /members/login/  
+Navigate to `/members/login/`  
 Enter valid username: admin  
 Enter valid password: yourpassword  
 Click "Login" button  
@@ -261,7 +276,7 @@ Works as expected!
 
 ### **Test 2: Invalid login**
 Steps:  
-Navigate to /members/login/  
+Navigate to `/members/login/`  
 Enter valid username: admin  
 Enter wrong password: wrongpass  
 Click "Sign in"  
@@ -296,11 +311,11 @@ Works as expected!
 
 ### **Test 1: Create New Member with Valid Data**  
 Steps:  
-Navigate to /members/login/  
+Navigate to `/members/login/`  
 Enter valid username: admin  
 Enter valid password: yourpassword  
 Click "Sign in"  
-Navigate to /members/members/add/  
+Navigate to `/members/members/add/`  
 Fill form with:  
 First Name: John  
 Last Name: Doe  
@@ -312,21 +327,179 @@ Emergency Phone: 07987654321
 Status: Active  
 Click "Create Member"
 
-### **Test 2: **
-### **Test 3: **
-### **Test 4: **
+Expected result:  
+Redirects to `/members/members/`
+Success message: "Member John Doe created successfully!"
+New member appears in member list with "Active" status badge
 
+Actual result:  
+Works as expected!
+
+### **Test 2: Edit Member Information**
+Steps:  
+Navigate to `/members/login/`  
+Login with valid credentials  
+Navigate to `/members/members/` 
+Click "Edit" on any member  
+Change First Name to `Harry`  
+Change Status to `Suspended`  
+Click "Update Member"
+
+Expected result:  
+Redirects to `/members/members/`  
+Success message: "Member [Name] updated successfully!"  
+Member shows updated name in list  
+Status badge changes from green to orange
+
+Actual result:  
+Works as expected!
+
+### **Test 3: Delete Member with Confirmation**
+Steps:  
+Navigate to `/members/login/`  
+Login with valid credentials  
+Navigate to `/members/members/`  
+Click "Delete" on a test member  
+On confirmation page, click "Delete Member"
+
+Expected result:  
+If confirmed: Redirects to member list, success message, member removed  
+If canceled: Returns to member list, no changes  
+Member no longer appears in list  
+
+
+### **Test 4: View Member Details Page**
+Steps:  
+Navigate to `/members/login/`  
+Login with valid credentials  
+Navigate to `/members/members/`
+Click "View" on any member
+
+Expected result:  
+Member details page loads completely  
+Shows all information: contact, emergency, membership plan  
+Edit and Delete buttons available  
+Status displayed clearly with colored badge
+
+Actual result:
+Works as expected!
+
+---  
 
 ### Form validation
 
 - Required fields enforced
 - Email format validation
-- Phone number acceptance
+- Phone number acceptance  
+
+### **Test 1: Create Member - Missing Required Field**
+Steps:  
+Navigate to `/members/login/`  
+Login with valid credentials  
+Navigate to `/members/members/add/`  
+Leave "First Name" field empty  
+Fill all other required fields  
+Click "Create Member"  
+
+Expected result:  
+Stays on form page  
+Error message under First Name: "This field is required"  
+Form preserves other entered data  
+
+Actual result:  
+Works as expected!
+
+### **Test 2:  - Missing Required Fieldn**  
+Steps:  
+Navigate to `/members/login/`  
+Login with valid credentials  
+Navigate to `/members/members/add/`  
+Enter "not-an-email" in Email field  
+Fill all other required fields  
+Click "Create Member"  
+
+Expected result:  
+Stays on form page  
+Error message under Email: "Enter a valid email address"  
+Form preserves other entered data  
+
+Actual result:  
+Works as expected!
+
+### **Test 3: Phone Number Acceptance**
+Steps:
+Navigate to `/members/login/`  
+Login with valid credentials
+Navigate to `/members/members/add/`  
+Enter "07123456789" in Phone field  
+Fill all other required fields  
+Click "Create Member"  
+
+Expected result:  
+Redirects to member list  
+Member created with phone: "07123456789"  
+No validation errors for phone format  
+
+Actual result:  
+Works as expected!  
+
+---  
 
 ### User Experience 
 
 - Responsive design on mobile/tablet/desktop
 - Clear success/error messages
+
+### **Test 1: Responsive Design - Mobile View**
+![Mobile screenshot](assets/images/phone.png)
+Steps:
+Open Chrome DevTools (F12 or right click on mac and click insepct)  
+Click "Toggle Device Toolbar" (📱 icon)  
+Select "iPhone 14 Pro" (390x844)  
+Navigate to `/members/members/`  
+Navigate to `/members/members/add/`  
+Navigate to `/members/dashboard/`  
+
+Expected result:
+No horizontal scrolling needed (excpet for when neccasry for table view of members)  
+Navbar collapses to hamburger menu  
+Text readable without zooming  
+
+Actual result:   
+Works as expected!
+
+### **Test 2: Responsive Design - Tablet View (iPad)**  
+![Ipad screenshot](assets/images/ipad.png)
+Steps:  
+Open Chrome DevTools (F12 or right click on mac and click insepct)  
+Click "Toggle Device Toolbar" (📱 icon)  
+Select "iPad Air" (1024x1366)  
+Navigate to `/members/members/`  
+Navigate to `/members/members/add/`  
+Check member list table layout  
+
+Layout adapts to medium screen width
+Forms use appropriate column layouts
+No horizontal scroll
+
+Actual result:   
+Works as expected!  
+
+### **Test 3: Responsive Design - Desktop View**
+![Desktop screenshot](assets/images/desktop.png) 
+Steps:  
+Close DevTools (normal browser view)  
+Navigate to all major pages  
+Resize browser window gradually from full screen to narrow  
+
+Expected result:  
+Layout adapts smoothly at all sizes  
+No content overlaps or breaks  
+Navigation remains accessible  
+Consistent experience across breakpoints  
+
+Actual result:  
+Works as expected!  
 
 ---
 
@@ -424,3 +597,10 @@ heroku run python manage.py migrate
 heroku run python manage.py createsuperuser
 heroku open
 ```  
+
+---
+
+### Credits
+
+Len Johnson for fantastic support during the early development of this project.  
+ChatGPT for brain storming and problem solving.  
