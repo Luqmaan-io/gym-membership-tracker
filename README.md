@@ -611,7 +611,18 @@ heroku open
 
 ---
 
-### Credits
+## Technologies used  
+HTML5 – structure  
+CSS3 – styling & animations    
+Python - Constructing database  
+VS Code - This web app was developed using VS code, a code editor developed by Microsoft. https://code.visualstudio.com/  
+Google Fonts - Used to add custom typography to the site. https://fonts.google.com/  
+Favicon.io - Used to generate the sites favicon in multiple formats. https://favicon.io/  
+ChatGPT - Used to help debug and guide with unfamiliar css and javascript skills. https://www.chatgpt.com  
+
+---  
+
+## Credits
 
 Len Johnson for fantastic support during the early development of this project.  
 ChatGPT for brain storming and problem solving.  
