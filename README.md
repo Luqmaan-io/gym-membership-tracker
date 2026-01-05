@@ -241,7 +241,51 @@ Thorough testing was conducted during the development of this application and ar
 
 - Valid login redirects to dashboard
 - Invalid login shows error message
-- Logout functionality works correctly
+- Logout functionality works correctly  
+
+### **Test 1: Valid Login**
+Steps:  
+Navigate to /members/login/  
+Enter valid username: admin  
+Enter valid password: yourpassword  
+Click "Login" button  
+
+Expected Result:  
+Redirect to dashboard (/members/dashboard/)  
+Success message: "Welcome to your dashboard"  
+Navbar shows "👋 Hello, admin"  
+Can access protected pages  
+
+Actual result:  
+Works as expected!  
+
+### **Test 2: Invalid login**
+Steps:  
+Navigate to /members/login/  
+Enter valid username: admin  
+Enter wrong password: wrongpass  
+Click "Sign in"  
+
+Expected result:  
+Stays on login page  
+Error message: "Invalid username or password, Please try again."  
+Form clears username and password fields  
+
+Actual result:  
+Works as expected!  
+
+### **Test 3: Logout functionality**
+Steps:  
+Naviagte to logout button, click  
+
+Expected result:  
+Logout of user  
+Redirect to home page  
+
+Actual result:  
+Works as expected!
+
+---
 
 ### Member Management
 
@@ -249,6 +293,29 @@ Thorough testing was conducted during the development of this application and ar
 - Edit member information
 - Delete member with confirmation
 - View member details page
+
+### **Test 1: Create New Member with Valid Data**  
+Steps:  
+Navigate to /members/login/  
+Enter valid username: admin  
+Enter valid password: yourpassword  
+Click "Sign in"  
+Navigate to /members/members/add/  
+Fill form with:  
+First Name: John  
+Last Name: Doe  
+Email: john.doe@example.com  
+Phone: 07123456789  
+Date of Birth: 1990-01-01  
+Emergency Contact: Jane Doe  
+Emergency Phone: 07987654321  
+Status: Active  
+Click "Create Member"
+
+### **Test 2: **
+### **Test 3: **
+### **Test 4: **
+
 
 ### Form validation
 
