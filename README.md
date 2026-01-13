@@ -91,7 +91,7 @@ As a Staff Member, I want to record a payment against a member's account so that
 ### Entity Relationship Diagram (ERD)
 
 The following diagram represents the database structure for the Gym Membership Tracker.  
-It illustrates how the main entities — GymOwner, Member, MembershipPlan, Payment, and Attendance — relate to each other.
+It illustrates how the main entities — Member, MembershipPlan, Payment, and Attendance all relate to each other.
   
 - Each **Member** belongs to one **MembershipPlan**.  
 - Each **Member** can have multiple **Payments** records.
