@@ -10,17 +10,17 @@ This is a gym management platform designed to provide a reliable backend archite
 ## Features
 
 ### Implemented Features
-- ✅ **Member Management**: Create, read, update and delete gym members
-- ✅ **Membership Plans**: Create different membership tiers with pricing (In django admin)
-- ✅ **Authentication**: Gym owner login/logout with session management
-- ✅ **Responsive Design**: Works on desktop, tablet, and mobile
-- ✅ **CRUD Operations**: Full Create, Read, Update, Delete functionality
+- **Member Management**: Create, read, update and delete gym members
+- **Membership Plans**: Create different membership tiers with pricing (In django admin)
+- **Authentication**: Gym owner login/logout with session management
+- **Responsive Design**: Works on desktop, tablet, and mobile
+- **CRUD Operations**: Full Create, Read, Update, Delete functionality
 
 ### Future Features
-- 🔄 Payment tracking and invoicing
-- 🔄 Attendance logging with check-in system
-- 🔄 Reports and analytics dashboard
-- 🔄 Inventory management for supplements
+- Payment tracking and invoicing
+- Attendance logging with check-in system
+- Reports and analytics dashboard
+- Inventory management for supplements
 
 ### Security Features
 - All passwords and secret keys stored in environment variables (.env file added to .gitignore)
@@ -281,7 +281,7 @@ Click "Login" button
 Expected Result:  
 Redirect to dashboard (/members/dashboard/)  
 Success message: "Welcome to your dashboard"  
-Navbar shows "👋 Hello, admin"  
+Navbar shows "Hello, admin"  
 Can access protected pages  
 
 Actual result:  
@@ -642,4 +642,4 @@ ChatGPT - Used to help debug and guide with unfamiliar css and javascript skills
 ## Credits
 
 Len Johnson for fantastic support during the early development of this project.  
-ChatGPT for brain storming and problem solving.  
+ChatGPT for brain storming on ideas and problem solving.  
