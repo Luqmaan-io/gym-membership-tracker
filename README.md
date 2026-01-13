@@ -92,10 +92,12 @@ As a Staff Member, I want to record a payment against a member's account so that
 
 The following diagram represents the database structure for the Gym Membership Tracker.  
 It illustrates how the main entities — GymOwner, Member, MembershipPlan, Payment, and Attendance — relate to each other.
+  
+- Each **Member** belongs to one **MembershipPlan**.  
+- Each **Member** can have multiple **Payments** records.
+- Each **Member** can have multiple **Attendance** records.
+- Each **MembershipPlan** has **Payments** records.
 
-- Each **GymOwner** can have multiple **Members**.  
-- Each **Member** belongs to one **GymOwner** and one **MembershipPlan**.  
-- Each **Member** can have multiple **Payments** and **Attendance** records.
 
 ![ERD Diagram](assets/wireframes/erd.png)
 
