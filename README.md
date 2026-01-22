@@ -1,4 +1,4 @@
-LINK TO LIVE SITE: 
+LINK TO LIVE SITE: https://gym-membership-system-28848c7c0952.herokuapp.com/
 
 # Gym Membership Tracker
 
