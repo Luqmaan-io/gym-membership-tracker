@@ -73,7 +73,7 @@ body {
 }
 
 /* 7. Footer */
-footer {
+.footer {
     background-color: var(--color-bg-secondary);
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     margin-top: auto;
