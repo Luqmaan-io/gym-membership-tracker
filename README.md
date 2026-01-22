@@ -523,13 +523,27 @@ Works as expected!
 - **Initial Issue**: Django template tags (`{% load static %}`) appeared before `<!DOCTYPE html>`.  
 - **Fix**: Right click on webpage, click View Page Source, copy and paste rendered HTML.  
 - **Result**: All HTML code free of errors.  
-![screenshot of HTML validation](assets/images/members-html-validation.png)  
+
+Below is the validation for the home page HTML.  
+![screenshot of HTML validation fir home page](assets/images/members-html-validation.png)  
+
+Below is the validation for the login page HTML.  
+![screenshot of HTML validation fir login page](assets/images/login-validation.png)  
+
+Below is the validation for the members page HTML.  
+![screenshot of HTML validation fir login page](assets/images/members-validation.png)  
+
 
 ### CSS
 - Custom CSS validated via [W3C CSS Validator (Jigsaw)](https://jigsaw.w3.org/css-validator/)  
 - **No errors found** in custom stylesheets.  
 - **Note**: Bootstrap CSS files were excluded from validation as they are third-party.
+
+Below is the CSS validation for the home page.  
 ![screenshot of CSS validation](assets/images/css-validation.png)  
+
+Below is the CSS validation for the login page.  
+![screenshot of CSS validation](assets/images/login-css-validation.png)  
 
 ## Deployment and setup
 
@@ -632,6 +646,7 @@ heroku open
 HTML5 – structure  
 CSS3 – styling & animations    
 Python - Constructing database  
+Django - Open-source framework used for backend  
 VS Code - This web app was developed using VS code, a code editor developed by Microsoft. https://code.visualstudio.com/  
 Google Fonts - Used to add custom typography to the site. https://fonts.google.com/  
 Favicon.io - Used to generate the sites favicon in multiple formats. https://favicon.io/  
