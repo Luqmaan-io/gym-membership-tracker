@@ -7,13 +7,15 @@ This application is intended to be used by owners and staff of gyms in order to 
 
 This is a gym management platform designed to provide a reliable backend architecture for handling essential gym operations such as membership tracking, payment records, and attendance logging. The focus of this project is on functionality, maintainability, and data structure, creating a scalable foundation that can be expanded with additional features in the future.
 
+ONLY THE MEMBERS PART OF THE APP HAS BEEN IMPLEMENTED, OTHER APPS ARE IDEAS FOR THE FUTURE
+
 ---
 
 ## Features
 
 ### Implemented Features
 - **Member Management**: Create, read, update and delete gym members
-- **Membership Plans**: Create different membership tiers with pricing (In django admin)
+- **Membership Plans**: Create different membership tiers with pricing (In Django admin)
 - **Authentication**: Gym owner login/logout with session management
 - **Responsive Design**: Works on desktop, tablet, and mobile
 - **CRUD Operations**: Full Create, Read, Update, Delete functionality
@@ -52,15 +54,15 @@ The application uses PostgreSQL with the following models:
 - `date_joined`: Auto-generated timestamp
 
 ### MembershipPlan Model  
-- `gym`: Foreignkey to Gym
+- `gym`: ForeignKey to Gym
 - `plan_name`: Name of the plan (e.g., "Premium Monthly")
 - `duration_months`: Duration in months
 - `price`: Monthly/annual price
-- `description`: Describes the benefits of the membership plan and it's duration
+- `description`: Describes the benefits of the membership plan and its duration
 - `status`: Active/Inactive
 
-### Membership Modal  
-- `member`: Foreginkey to member
+### Membership Model  
+- `member`: ForeginKey to member
 - `membership_plan`: Foreginkey to MembershipPlan
 - `start_date`: Start of the membershio
 - `end_date`: End of the membership
@@ -104,7 +106,7 @@ It illustrates how the main entities — Member, MembershipPlan, Payment, and At
 ![ERD Diagram](assets/wireframes/erd.png)
 
 ---
-### Stratergy  
+### Strategy  
 The main users of this platform are the owners and staff of gyms. Users can view and manage gym members, update their membership details, and handle payment records. The system aims to reduce manual paperwork and make gym administration more efficient and data-driven.
 
 This platform helps gym owners track key business information, such as member activity, payment status, and plan types all from one place.
@@ -306,7 +308,7 @@ Works as expected!
 
 ### **Test 3: Logout functionality**
 Steps:  
-Naviagte to logout button, click  
+Navigate to logout button, click  
 
 Expected result:  
 Logout of user  
@@ -476,7 +478,7 @@ Navigate to `/members/members/add/`
 Navigate to `/members/dashboard/`  
 
 Expected result:
-No horizontal scrolling needed (excpet for when neccasry for table view of members)  
+No horizontal scrolling needed (except for when necessary for table view of members)  
 Navbar collapses to hamburger menu  
 Text readable without zooming  
 
@@ -610,7 +612,7 @@ python manage.py createsuperuser
 python manage.py runserver
 ```  
 
-### Herko deployment
+### Herkou deployment
 
 1. **Install Heroku CLI** and login
 
@@ -659,4 +661,4 @@ ChatGPT - Used to help debug and guide with unfamiliar css and javascript skills
 ## Credits
 
 Len Johnson for fantastic support during the early development of this project.  
-ChatGPT for brain storming on ideas and problem solving.  
+ChatGPT for brainstorming on ideas and problem solving.  
